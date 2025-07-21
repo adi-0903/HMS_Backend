@@ -8,6 +8,7 @@ import { errorMiddleware } from "./middlewares/errorMiddleware.js";
 import messageRouter from "./router/messageRouter.js";
 import userRouter from "./router/userRouter.js";
 import appointmentRouter from "./router/appointmentRouter.js";
+import homeRouter from "./router/homeRouter.js";
 
 const app = express();
 config({ path: "./config/config.env" });
@@ -30,6 +31,8 @@ app.use(
     tempFileDir: "/tmp/",
   })
 );
+
+app.use("/", homeRouter);
 app.use("/api/v1/message", messageRouter);
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/appointment", appointmentRouter);
